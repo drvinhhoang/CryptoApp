@@ -10,7 +10,7 @@ import OSLog
 
 struct LogMess {
     private static let logger = Logger()
-    static func log(_ mess: String, file: String = #file, line: Int = #line, function: String = #function) {
-        logger.log(level: .default, "[\(Date().formatted())][file: \(file), line: \(line), function: \(function)] : \(mess)")
+    static func log(_ mess: String, file: String = #fileID, line: Int = #line, function: String = #function) {
+        logger.log(level: .default, "[file: \(file), line: \(line), \(function)] : \(mess)")
     }
 }
