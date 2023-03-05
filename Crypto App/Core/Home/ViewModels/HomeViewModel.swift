@@ -10,6 +10,14 @@ import Combine
 
 class HomeViewModel: ObservableObject {
     
+    @Published var statstistics: [StatisticModel] = [
+        StatisticModel(title: "title", value: "$12.5Bn", percentageChange: 1),
+        StatisticModel(title: "title", value: "$1.23Tr", percentageChange: 2),
+        StatisticModel(title: "title", value: "$50.4k", percentageChange: -3),
+        StatisticModel(title: "title", value: "$1.23Tr", percentageChange: 4),
+        StatisticModel(title: "title", value: "$12.5Bn", percentageChange: -5),
+    ]
+    
     private let coinDataService = CoinDataService()
     @Published var allCoins: [Coin] = []
     @Published var portfolioCoins: [Coin] = []
