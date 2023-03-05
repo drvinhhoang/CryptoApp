@@ -20,11 +20,11 @@ struct HomeView: View {
                 .ignoresSafeArea()
             VStack {
                 homeHeader
+                SearchBarView(searchText: $vm.searchText)
                 columnTitles
-                
                 if !showPortfolio {
                     allCoinsList
-                    .transition(.move(edge: .leading))
+                        .transition(.move(edge: .leading))
                 }
                 
                 if showPortfolio {
@@ -40,11 +40,19 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            HomeView()
+        Group {
+            NavigationStack {
+                HomeView()
+            }
+            .environmentObject(dev.homeVM)
+            NavigationStack {
+                HomeView()
+            }
+            .preferredColorScheme(.dark)
+            .environmentObject(dev.homeVM)
         }
-        .environmentObject(dev.homeVM)
     }
+       
 }
 
 extension HomeView {
@@ -52,7 +60,7 @@ extension HomeView {
         HStack {
             CircleButtonView(iconName: showPortfolio ? "plus" : "info")
                 .background(
-                CircleButtonAnimationView(animate: $showPortfolio)
+                    CircleButtonAnimationView(animate: $showPortfolio)
                 )
             Spacer()
             Text(showPortfolio ? "Portfolio" : "Live Prices")
