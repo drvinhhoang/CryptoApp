@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5A317C0929B5F92200788F2D /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A317C0729B5F92200788F2D /* PortfolioContainer.xcdatamodeld */; };
 		5A317C0B29B5F99900788F2D /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A317C0A29B5F99900788F2D /* PortfolioDataService.swift */; };
+		5A7A67A629B7557300085DA8 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7A67A529B7557300085DA8 /* HapticManager.swift */; };
 		5A7ED7E529B25AE0007C6539 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7ED7E429B25AE0007C6539 /* HomeViewModel.swift */; };
 		5A7ED7E829B28440007C6539 /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7ED7E729B28440007C6539 /* CoinDataService.swift */; };
 		5A7ED7EB29B2DB1B007C6539 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7ED7EA29B2DB1B007C6539 /* NetworkingManager.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		5A317C0829B5F92200788F2D /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
 		5A317C0A29B5F99900788F2D /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
+		5A7A67A529B7557300085DA8 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		5A7ED7E429B25AE0007C6539 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5A7ED7E729B28440007C6539 /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
 		5A7ED7EA29B2DB1B007C6539 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				5A7ED7EA29B2DB1B007C6539 /* NetworkingManager.swift */,
+				5A7A67A529B7557300085DA8 /* HapticManager.swift */,
 				5A7ED7F329B35079007C6539 /* Logger.swift */,
 				5A7ED7F529B35CCA007C6539 /* LocalFileManager.swift */,
 			);
@@ -322,6 +325,7 @@
 				5ACABD1529AF8FEC006D7A1B /* Crypto_AppApp.swift in Sources */,
 				5A7ED7FA29B3B061007C6539 /* UIApplication.swift in Sources */,
 				5A7ED7F429B35079007C6539 /* Logger.swift in Sources */,
+				5A7A67A629B7557300085DA8 /* HapticManager.swift in Sources */,
 				5ACABD3429B01244006D7A1B /* CircleButtonAnimationView.swift in Sources */,
 				5A7ED7F829B3AA4E007C6539 /* SearchBarView.swift in Sources */,
 				5A7ED80A29B4FA9C007C6539 /* CoinLogoView.swift in Sources */,
