@@ -16,6 +16,9 @@ struct HomeView: View {
     @State private var showPortfolio: Bool = false
     @State private var showPortfolioView: Bool = false
     
+    @State private var seletedCoin: Coin? = nil
+    @State private var showDetailView: Bool = false
+    
     var body: some View {
         ZStack {
             Color.theme.background
@@ -93,8 +96,12 @@ extension HomeView {
     private var allCoinsList: some View {
         List {
             ForEach(vm.allCoins) { coin in
-                CoinRowView(coin: coin, showHoldingColumn: false)
-                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                NavigationLink(destination: NavigationLazyView(
+                    DetailView(coin: coin)
+                )) {
+                    CoinRowView(coin: coin, showHoldingColumn: false)
+                        .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                }
             }
         }
         .listStyle(PlainListStyle())
@@ -103,11 +110,22 @@ extension HomeView {
     private var portfolioCoinsList: some View {
         List {
             ForEach(vm.portfolioCoins) { coin in
-                CoinRowView(coin: coin, showHoldingColumn: true)
-                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                NavigationLink(destination: NavigationLazyView(
+                    DetailView(coin: coin)
+                )) {
+                    CoinRowView(coin: coin, showHoldingColumn: true)
+                        .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                }
+                
             }
         }
         .listStyle(PlainListStyle())
+    }
+    
+    private func segue(coin: Coin) {
+        self.seletedCoin = coin
+        showDetailView.toggle()
+        LogMess.log("\(showDetailView)")
     }
     
     private var columnTitles: some View {
