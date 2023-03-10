@@ -25,8 +25,8 @@ struct DetailView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                Text("")
-                    .frame(height: 150)
+                ChartView(coin: vm.coin)
+                    .padding(.vertical)
                 overViewTitle
                 Divider()
                 overviewGrid
@@ -37,6 +37,11 @@ struct DetailView: View {
             .padding()
         }
         .navigationTitle(vm.coin.name)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+               navigationBarTrailingItems
+            }
+        }
         
     }
 }
@@ -50,6 +55,16 @@ struct DetailView_Previews: PreviewProvider {
 }
 
 extension DetailView {
+    
+    private var navigationBarTrailingItems: some View {
+        HStack {
+            Text(vm.coin.symbol.uppercased())
+                .font(.headline)
+                .foregroundColor(.theme.secondaryText)
+            CoinImageView(coin: vm.coin)
+                .frame(width: 25, height: 25)
+        }
+    }
     private var overViewTitle: some View {
         Text("Overview")
             .font(.title)
