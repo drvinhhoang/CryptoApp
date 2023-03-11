@@ -20,7 +20,6 @@ struct DetailView: View {
 
     init(coin: Coin) {
         _vm = StateObject(wrappedValue: DetailViewModel(coin: coin))
-        LogMess.log("init detailView for: \(coin.name)")
     }
     
     var body: some View {
@@ -41,6 +40,10 @@ struct DetailView: View {
             }
             .padding()
         }
+        .background(
+            Color.theme.background
+                .ignoresSafeArea()
+        )
         .navigationTitle(vm.coin.name)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

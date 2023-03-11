@@ -27,9 +27,9 @@ class CoinImageService {
     func getCoinImage() {
         if let savedImage = fileManager.getImage(imageName: self.imageName, folderName: folderName) {
             image = savedImage
-            LogMess.log("Retrieved image from FileManager")
+           // LogMess.log("Retrieved image from FileManager")
         } else {
-            LogMess.log("download image")
+           // LogMess.log("download image")
             downloadImage()
         }
     }
@@ -40,6 +40,8 @@ class CoinImageService {
             .tryMap({ data in
                 return UIImage(data: data)
             })
+            .receive(on: DispatchQueue.main)
+
             .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] returnedImage in
                 guard let self = self, let downloadedImage = returnedImage else { return }
                 self.image = downloadedImage

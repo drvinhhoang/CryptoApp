@@ -16,6 +16,7 @@ class HomeViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var isLoading: Bool = false
     @Published var sortOption: SortOption = .holdings
+    @Published var showLaunchView: Bool = true
     
     private let coinDataService = CoinDataService()
     private let marketDataService = MarketDataService()
@@ -34,8 +35,10 @@ class HomeViewModel: ObservableObject {
         // updates allCoins
         $searchText
             .combineLatest(coinDataService.$allCoins, $sortOption)
+            .dropFirst()
             .map(filterAndSortCoin)
             .sink { [weak self] coins in
+                self?.showLaunchView = false
                 self?.allCoins = coins
             }
             .store(in: &cancellables)

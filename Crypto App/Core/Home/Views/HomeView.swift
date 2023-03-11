@@ -38,8 +38,14 @@ struct HomeView: View {
                 }
                 
                 if showPortfolio {
-                    portfolioCoinsList
-                        .transition(.move(edge: .trailing))
+                    ZStack {
+                        if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
+                            portfolioEmptyText
+                        } else {
+                            portfolioCoinsList
+                        }
+                    }
+                    .transition(.move(edge: .trailing))
                 }
                 
                 Spacer(minLength: 0)
@@ -108,6 +114,7 @@ extension HomeView {
                     CoinRowView(coin: coin, showHoldingColumn: false)
                         .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
                 }
+                .listRowBackground(Color.clear)
             }
         }
         .listStyle(PlainListStyle())
@@ -122,16 +129,24 @@ extension HomeView {
                     CoinRowView(coin: coin, showHoldingColumn: true)
                         .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
                 }
-                
+                .listRowBackground(Color.clear)
             }
         }
         .listStyle(PlainListStyle())
     }
     
+    private var portfolioEmptyText: some View {
+        Text("You haven't added any coins to your portfolio yet. Click the + button to get started! 😎")
+            .font(.callout)
+            .foregroundColor(.theme.accent)
+            .fontWeight(.medium)
+            .multilineTextAlignment(.center)
+            .padding(50)
+    }
+    
     private func segue(coin: Coin) {
         self.seletedCoin = coin
         showDetailView.toggle()
-        LogMess.log("\(showDetailView)")
     }
     
     private var columnTitles: some View {
